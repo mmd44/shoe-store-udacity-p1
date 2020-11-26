@@ -10,6 +10,9 @@
             type="com.udacity.shoestore.screens.shoe.ShoeViewModel"/>
     </data>
 
+
+    <!--Used the CoordinatorLayout as it fits most with what is required; a fab and a ScrollView -->
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

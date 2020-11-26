@@ -10,6 +10,8 @@
             type="com.udacity.shoestore.screens.shoe.ShoeViewModel" />
     </data>
 
+    <!-- This is a great example of the benefits of a ConstraintLayout! The design is achieved in minimal time and everything is well aligned and constrained! -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

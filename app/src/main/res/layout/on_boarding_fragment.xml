@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.udacity.shoestore.navigation.OnBoardingFragment">
 
+    <!--Used the ConstraintLayout mainly as a practice in the login, on boarding, and welcome fragment;
+    The UI in these screens is simple and no complex constraints are required!
+     A Linear layout could have completed the job -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/boarding_layout"
         android:layout_width="match_parent"

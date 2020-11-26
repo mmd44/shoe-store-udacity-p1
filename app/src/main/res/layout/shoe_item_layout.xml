@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.udacity.shoestore.screens.shoe.ShoeFragment">
 
+    <!--Used the ConstraintLayout to achieve the shoe item layout; it would have been painful to do so with relative/linear layouts! -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
