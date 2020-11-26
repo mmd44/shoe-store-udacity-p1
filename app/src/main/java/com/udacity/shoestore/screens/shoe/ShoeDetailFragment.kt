@@ -12,7 +12,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.ShoeDetailFragmentBinding
-import com.udacity.shoestore.databinding.ShoeFragmentBinding
 import com.udacity.shoestore.models.Shoe
 
 class ShoeDetailFragment : Fragment() {
@@ -32,21 +31,17 @@ class ShoeDetailFragment : Fragment() {
             false
         )
 
+        binding.shoeViewModel = viewModel
+
         binding.confirmButton.setOnClickListener {
             if (validateInput()) {
                 val builder = AlertDialog.Builder(requireContext())
                 builder.setMessage("Are you sure you want to add this shoe?")
                     .setCancelable(false)
                     .setPositiveButton("Yes") { dialog, id ->
-                        val s = Shoe(
-                            binding.nameEdit.text.toString(),
-                            binding.sizeEdit.text.toString().toDouble(),
-                            binding.companyEdit.text.toString(),
-                            binding.descEdit.text.toString()
-                        )
-                        viewModel.addNewShoe(s)
+                        viewModel.addNewShoe()
+                        viewModel.resetShoeAddition()
                         it.findNavController().popBackStack()
-
                     }
                     .setNegativeButton("No") { dialog, id ->
                         dialog.dismiss()
@@ -57,6 +52,7 @@ class ShoeDetailFragment : Fragment() {
         }
 
         binding.cancelButton.setOnClickListener {
+            viewModel.resetShoeAddition()
             it.findNavController().popBackStack()
         }
 
@@ -64,13 +60,10 @@ class ShoeDetailFragment : Fragment() {
     }
 
     private fun validateInput(): Boolean {
-        val name: String = binding.nameEdit.text.toString()
-        val size: String = binding.sizeEdit.text.toString()
-        val company: String = binding.companyEdit.text.toString()
-        val desc: String = binding.descEdit.text.toString()
 
-        if (name.trim().isNotEmpty() && size.trim().isNotEmpty() && company.trim()
-                .isNotEmpty() && desc.trim().isNotEmpty()
+        if (viewModel.newShoe.name.trim().isNotEmpty() && viewModel.newShoe.size.toString().trim()
+                .isNotEmpty() && viewModel.newShoe.company.trim()
+                .isNotEmpty() && viewModel.newShoe.description.trim().isNotEmpty()
         ) {
             return true
         } else {
